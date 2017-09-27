@@ -88,6 +88,13 @@
               <div class="form-group">
                 <label for="export_accounting_btn" class="col-md-6 control-label">Export accounting data</label>
                 <div class="col-md-6">
+                  <select class="form-control" id="input_date_format" name="month">
+                    {{#with company}}
+                      {{#each this.get_available_export_months}}
+                        <option value="{{this}}" {{# if_equal this ../date_format }} selected="selected"{{/if_equal}}>{{this}}</option>
+                      {{/each}}
+                    {{/with}}
+                  </select>
                   <button type="submit" id="export_accounting_btn" class="btn btn-success">Download</button>
                 </div>
               </div>
