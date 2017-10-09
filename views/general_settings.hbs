@@ -84,8 +84,26 @@
               </div>
             </form>
 
-
-            <div class="form-group">&nbsp;</div>
+            <form class="form-horizontal" method="POST" action="/settings/company/accountantdata/" id="accounting_export_form">
+              <div class="form-group">
+                <label for="export_accounting_btn" class="col-md-6 control-label">Export accounting data</label>
+                <div class="col-md-6">
+                  <select class="form-control" id="input_date_format" name="month">
+                    {{#with company}}
+                      {{#each this.get_available_export_months}}
+                        <option value="{{this}}" {{# if_equal this ../date_format }} selected="selected"{{/if_equal}}>{{this}}</option>
+                      {{/each}}
+                    {{/with}}
+                  </select>
+                  <button type="submit" id="export_accounting_btn" class="btn btn-success">Download</button>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-md-offset-2">
+                  <em>Download employees absences for selected month in XLSX file.</em>
+                </div>
+              </div>
+            </form>
 
             <form class="form-horizontal" method="POST" action="/settings/schedule" id="company_schedule_form">
             <input type="hidden" name="company_wide" value="1">
